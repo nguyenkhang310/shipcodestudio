@@ -159,7 +159,7 @@ const Home = () => {
               className="font-display hero-title font-extrabold text-balance"
             >
               Giải pháp phần mềm{" "}
-              <span className="text-gradient animate-pulse block mt-2">
+              <span className="text-gradient animate-text-glow block mt-2">
                 toàn diện
               </span>
               <span className="block mt-2">bàn giao đúng hạn.</span>
