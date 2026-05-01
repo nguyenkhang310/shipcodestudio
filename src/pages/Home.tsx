@@ -121,9 +121,9 @@ const SectionIntro = ({
 const Home = () => {
   return (
     <Page>
-      <section className="relative isolate -mt-24 overflow-hidden border-b border-border/70 pt-24 md:-mt-28 md:pt-28">
+      <section className="relative isolate -mt-24 overflow-hidden border-b border-border/70 pt-20 md:-mt-28 md:pt-28">
         {/* Enhanced background with multiple gradients */}
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-primary/8 via-background/40 to-background/95" />
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-primary/8 via-background/40 to-background/95" /}
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-96 bg-gradient-to-b from-primary/15 to-transparent opacity-40" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
@@ -131,13 +131,13 @@ const Home = () => {
         <div
           className="pointer-events-none absolute -right-40 top-32 z-0 h-80 w-80 rounded-full blur-3xl opacity-20 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(42 92% 58% / 0.5), transparent 70%)" }}
-        />
+        /}
         <div
           className="pointer-events-none absolute -left-32 bottom-40 z-0 h-72 w-72 rounded-full blur-3xl opacity-15 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)" }}
-        />
+        /}
 
-        <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-8 py-10 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
+        <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-6 py-8 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
           <div className="space-y-8 lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -185,24 +185,24 @@ const Home = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.25 }}
-              className="flex flex-wrap gap-4 pt-4"
+              className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 pt-4"
             >
               <Button
                 asChild
                 variant="hero"
-                size="xl"
-                className="group shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all duration-300"
+                size="default"
+                className="group shadow-lg shadow-primary/40 hover:shadow-primary/60 transition-all duration-300 sm:size-xl"
               >
-                <Link to="/lien-he" className="gap-3">
+                <Link to="/lien-he" className="gap-2 sm:gap-3">
                   <span>Nhận tư vấn ngay</span>
-                  <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
+                  <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 transition-transform duration-300 group-hover:translate-x-1.5" />
                 </Link>
               </Button>
               <Button
                 asChild
                 variant="outlineGlow"
-                size="xl"
-                className="group border-primary/40 hover:border-primary/60 hover:bg-primary/8 transition-all duration-300"
+                size="default"
+                className="group border-primary/40 hover:border-primary/60 hover:bg-primary/8 transition-all duration-300 sm:size-xl"
               >
                 <Link to="/du-an" className="gap-2">
                   <span>Xem dự án mẫu</span>
@@ -215,7 +215,7 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="grid max-w-2xl grid-cols-3 gap-3 border-t border-border/50 pt-6 sm:gap-4 sm:pt-8"
+              className="grid max-w-2xl grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 border-t border-border/50 pt-4 sm:pt-6 sm:gap-4 sm:pt-8"
             >
               {[
                 { value: "99.9%", label: "Uptime hệ thống" },
@@ -224,14 +224,14 @@ const Home = () => {
               ].map((s) => (
                 <motion.div
                   key={s.label}
-                  className="group rounded-lg border border-primary/20 bg-gradient-to-br from-primary/8 to-transparent p-4 hover:border-primary/40 hover:bg-primary/12 transition-all duration-300 cursor-pointer"
+                  className="group rounded-lg border border-primary/20 bg-gradient-to-br from-primary/8 to-transparent p-3 sm:p-4 hover:border-primary/40 hover:bg-primary/12 transition-all duration-300 cursor-pointer"
                   whileHover={{ scale: 1.05, y: -4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="font-display text-xl sm:text-3xl font-bold text-gradient">
+                  <div className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-gradient">
                     {s.value}
                   </div>
-                  <div className="mt-2 text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors">
+                  <div className="mt-1 sm:mt-2 text-[11px] sm:text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors">
                     {s.label}
                   </div>
                 </motion.div>

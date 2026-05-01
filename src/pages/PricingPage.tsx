@@ -58,18 +58,18 @@ const plans = [
 export const PricingContent = () => {
   return (
     <>
-      <div className="grid gap-5 md:grid-cols-3 max-w-6xl mx-auto">
+      <div className="grid gap-4 md:gap-5 md:grid-cols-3 max-w-6xl mx-auto">
         {plans.map((p) => (
           <div
             key={p.name}
-            className={`premium-card relative flex flex-col p-6 transition-all duration-300 hover:-translate-y-1 md:p-7 ${
+            className={`premium-card relative flex flex-col p-4 sm:p-5 md:p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 ${
               p.featured
                 ? "border-primary/60 shadow-elegant"
                 : "hover:border-primary/40"
             }`}
           >
             {p.featured && (
-              <div className="absolute -top-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-md bg-gradient-fire px-4 py-1.5 text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground shadow-elegant">
+              <div className="absolute -top-3 sm:-top-4 left-1/2 flex -translate-x-1/2 items-center gap-1.5 rounded-md bg-gradient-fire px-3 py-1 sm:px-4 sm:py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-[0.12em] text-primary-foreground shadow-elegant">
                 <Sparkles className="w-3 h-3" /> Phổ biến nhất
               </div>
             )}
@@ -77,36 +77,44 @@ export const PricingContent = () => {
               <div className="absolute inset-0 mesh-gradient opacity-20 pointer-events-none" />
             )}
             <div className="relative flex h-full flex-col">
-              <h3 className="font-display font-semibold text-xl mb-2">
+              <h3 className="font-display font-semibold text-lg md:text-xl mb-2">
                 {p.name}
               </h3>
-              <p className="text-sm text-muted-foreground mb-6 min-h-[40px]">
+              <p className="text-xs md:text-sm text-muted-foreground mb-5 md:mb-6 min-h-[40px]">
                 {p.desc}
               </p>
-              <div className="mb-8">
+              <div className="mb-6 md:mb-8">
                 <div className="flex items-baseline gap-1">
                   {p.price !== "Liên hệ" && (
-                    <span className="text-sm text-muted-foreground">từ</span>
+                    <span className="text-xs text-muted-foreground">từ</span>
                   )}
-                  <span className="font-display font-bold text-4xl text-gradient md:text-5xl">
+                  <span className="font-display font-bold text-2xl sm:text-3xl md:text-4xl text-gradient">
                     {p.price}
                   </span>
                   {p.price !== "Liên hệ" && (
-                    <span className="text-sm text-muted-foreground">đ</span>
+                    <span className="text-xs text-muted-foreground">đ</span>
                   )}
                 </div>
               </div>
-              <ul className="space-y-3 mb-8 flex-1">
+              <ul className="space-y-2 md:space-y-3 mb-6 md:mb-8 flex-1">
                 {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-3 text-sm">
-                    <div className="mt-0.5 w-5 h-5 rounded-md bg-primary/15 flex items-center justify-center shrink-0">
-                      <Check className="w-3 h-3 text-primary" />
+                  <li
+                    key={f}
+                    className="flex items-start gap-2 md:gap-3 text-xs md:text-sm"
+                  >
+                    <div className="mt-0.5 w-4 md:w-5 h-4 md:h-5 rounded-md bg-primary/15 flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 md:w-3 h-2.5 md:h-3 text-primary" />
                     </div>
                     <span className="text-muted-foreground">{f}</span>
                   </li>
                 ))}
               </ul>
-              <Button asChild variant={p.variant} className="w-full" size="lg">
+              <Button
+                asChild
+                variant={p.variant}
+                className="w-full"
+                size="default"
+              >
                 <Link to="/lien-he">{p.cta}</Link>
               </Button>
             </div>

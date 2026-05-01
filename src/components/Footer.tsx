@@ -32,8 +32,8 @@ export const Footer = () => {
 
       <div className="container relative">
         {/* Animated shimmer watermark */}
-        <div className="mb-14 select-none overflow-hidden border-b border-border/70 pb-8 relative group">
-          <div className="font-display text-5xl font-black leading-none text-transparent bg-gradient-to-b from-foreground/12 to-transparent bg-clip-text sm:text-7xl md:text-8xl lg:text-9xl relative">
+        <div className="mb-12 sm:mb-14 select-none overflow-hidden border-b border-border/70 pb-6 sm:pb-8 relative group">
+          <div className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-black leading-none text-transparent bg-gradient-to-b from-foreground/12 to-transparent bg-clip-text relative">
             SHIPCODE
             {/* Shimmer overlay */}
             <div
@@ -47,7 +47,10 @@ export const Footer = () => {
           {/* Underline glow */}
           <motion.div
             className="absolute bottom-8 left-0 right-0 h-px"
-            style={{ background: "linear-gradient(90deg, transparent, hsl(42 92% 58% / 0.3), transparent)" }}
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, hsl(42 92% 58% / 0.3), transparent)",
+            }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
@@ -76,7 +79,8 @@ export const Footer = () => {
             </div>
             <p className="max-w-md text-sm leading-relaxed text-muted-foreground mb-6">
               Đối tác công nghệ tin cậy của hơn 500+ doanh nghiệp và cá nhân.
-              Chúng tôi không chỉ viết code – chúng tôi kiến tạo giải pháp kinh doanh.
+              Chúng tôi không chỉ viết code – chúng tôi kiến tạo giải pháp kinh
+              doanh.
             </p>
             <div className="flex gap-3">
               {socialLinks.slice(0, 4).map((link, idx) => (
@@ -135,17 +139,26 @@ export const Footer = () => {
             <div className="space-y-3 text-sm">
               <div className="group">
                 <span className="text-muted-foreground">SĐT / Zalo · </span>
-                <a href={`tel:${contactInfo.phoneRaw}`} className="font-mono hover:text-primary transition-colors">
+                <a
+                  href={`tel:${contactInfo.phoneRaw}`}
+                  className="font-mono hover:text-primary transition-colors"
+                >
                   {contactInfo.phoneDisplay}
                 </a>
               </div>
               <div className="group">
                 <span className="text-muted-foreground">Email · </span>
-                <a href={`mailto:${contactInfo.email}`} className="break-all hover:text-primary transition-colors">
+                <a
+                  href={`mailto:${contactInfo.email}`}
+                  className="break-all hover:text-primary transition-colors"
+                >
                   {contactInfo.email}
                 </a>
               </div>
-              <div><span className="text-muted-foreground">Office · </span>{contactInfo.office}</div>
+              <div>
+                <span className="text-muted-foreground">Office · </span>
+                {contactInfo.office}
+              </div>
             </div>
 
             {/* Status badge */}
