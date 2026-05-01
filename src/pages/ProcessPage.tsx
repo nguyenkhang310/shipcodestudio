@@ -98,9 +98,9 @@ export const ProcessContent = () => {
             {/* Connection dot between line and card */}
             <div className="absolute -left-[3px] top-5 h-1.5 w-1.5 rounded-full bg-primary/60 md:-left-[4px]" />
 
-            <div className="premium-card group p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 md:p-7">
+            <div className="premium-card group p-4 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 md:p-7">
               <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                <h3 className="font-display text-2xl font-bold text-foreground transition-colors group-hover:text-primary md:text-3xl">
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground transition-colors group-hover:text-primary md:text-3xl">
                   {s.title}
                 </h3>
                 <motion.div
@@ -111,7 +111,7 @@ export const ProcessContent = () => {
                 </motion.div>
               </div>
               
-              <p className="mb-7 text-base leading-8 text-muted-foreground md:text-lg">
+              <p className="mb-5 sm:mb-7 text-sm sm:text-base leading-7 sm:leading-8 text-muted-foreground md:text-lg">
                 {s.desc}
               </p>
               

@@ -33,7 +33,7 @@ export const Footer = () => {
       <div className="container relative">
         {/* Animated shimmer watermark */}
         <div className="mb-14 select-none overflow-hidden border-b border-border/70 pb-8 relative group">
-          <div className="font-display text-6xl font-black leading-none text-transparent bg-gradient-to-b from-foreground/12 to-transparent bg-clip-text sm:text-7xl md:text-8xl lg:text-9xl relative">
+          <div className="font-display text-5xl font-black leading-none text-transparent bg-gradient-to-b from-foreground/12 to-transparent bg-clip-text sm:text-7xl md:text-8xl lg:text-9xl relative">
             SHIPCODE
             {/* Shimmer overlay */}
             <div

@@ -183,6 +183,14 @@
   ::-webkit-scrollbar-thumb:hover {
     background: hsl(var(--primary) / 0.6);
   }
+
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 @layer utilities {
@@ -825,14 +833,14 @@
   }
 
   .hero-title {
-    font-size: 3rem;
-    line-height: 1.08;
+    font-size: 2rem;
+    line-height: 1.12;
     letter-spacing: 0;
   }
 
   .display-heading {
-    font-size: 2.5rem;
-    line-height: 1.12;
+    font-size: 1.75rem;
+    line-height: 1.15;
     letter-spacing: 0;
   }
 
@@ -1135,13 +1143,23 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .hero-title {
-    font-size: 4.5rem;
+    font-size: 3rem;
   }
 
   .display-heading {
-    font-size: 3.75rem;
+    font-size: 2.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+
+  .display-heading {
+    font-size: 3.25rem;
   }
 }
 

@@ -147,7 +147,7 @@ const Home = () => {
           transition={{ duration: 10, repeat: Infinity, delay: 1 }}
         />
 
-        <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-10 py-16 lg:grid-cols-12 lg:py-20">
+        <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-8 py-10 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
           <div className="space-y-8 lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -166,7 +166,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="font-display hero-title font-extrabold text-balance text-4xl md:text-5xl lg:text-6xl"
+              className="font-display hero-title font-extrabold text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
             >
               Giải pháp phần mềm{" "}
               <span className="text-gradient animate-pulse block mt-2">
@@ -225,7 +225,7 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="grid max-w-2xl grid-cols-1 gap-4 border-t border-border/50 pt-8 sm:grid-cols-3"
+              className="grid max-w-2xl grid-cols-3 gap-3 border-t border-border/50 pt-6 sm:gap-4 sm:pt-8"
             >
               {[
                 { value: "99.9%", label: "Uptime hệ thống" },
@@ -238,7 +238,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05, y: -4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="font-display text-3xl font-bold text-gradient">
+                  <div className="font-display text-xl sm:text-3xl font-bold text-gradient">
                     {s.value}
                   </div>
                   <div className="mt-2 text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors">
@@ -266,7 +266,7 @@ const Home = () => {
               transition={{ duration: 4, repeat: Infinity }}
             />
 
-            <div className="premium-card mx-auto max-w-md p-7 md:p-8 border-primary/30 backdrop-blur-sm">
+            <div className="premium-card mx-auto max-w-md p-5 sm:p-7 md:p-8 border-primary/30 backdrop-blur-sm">
               <div className="flex items-center justify-between gap-4 border-b border-primary/20 pb-6 mb-6">
                 <div>
                   <div className="text-xs font-mono uppercase tracking-[0.14em] text-primary font-bold">
@@ -559,7 +559,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.25 + idx * 0.08 }}
-                className="premium-card group flex min-h-[200px] flex-col justify-between p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
+                className="premium-card group flex min-h-[160px] sm:min-h-[200px] flex-col justify-between p-5 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
                 whileHover={{ y: -4 }}
               >
                 <div>

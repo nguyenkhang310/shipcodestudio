@@ -148,12 +148,12 @@ const PortfolioPage = () => {
 
       <div className="container">
         {/* Enhanced filter with count badges */}
-        <div className="mb-10 flex flex-wrap gap-2 border-b border-border/70 pb-5">
+        <div className="mb-8 sm:mb-10 flex gap-2 overflow-x-auto border-b border-border/70 pb-4 sm:pb-5 sm:flex-wrap scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
           {filters.map((f) => (
             <motion.button
               key={f}
               onClick={() => setActive(f)}
-              className={`relative rounded-md px-4 py-2.5 text-sm font-semibold transition-all duration-300 ${
+              className={`relative shrink-0 rounded-md px-3 sm:px-4 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 active === f
                   ? "bg-primary text-primary-foreground shadow-lg shadow-primary/30"
                   : "border border-border bg-card/60 text-muted-foreground hover:border-primary/40 hover:text-foreground"
