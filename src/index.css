@@ -1173,6 +1173,38 @@
   }
 }
 
+/* Mobile performance: reduce heavy GPU effects */
+@media (max-width: 767px) {
+  .blur-3xl {
+    filter: blur(32px) !important;
+  }
+  .blur-2xl {
+    filter: blur(20px) !important;
+  }
+  .backdrop-blur-2xl {
+    -webkit-backdrop-filter: blur(12px) !important;
+    backdrop-filter: blur(12px) !important;
+  }
+  .backdrop-blur-xl {
+    -webkit-backdrop-filter: blur(8px) !important;
+    backdrop-filter: blur(8px) !important;
+  }
+  .mesh-gradient {
+    filter: blur(48px) !important;
+    opacity: 0.15 !important;
+  }
+  .aurora {
+    animation: none !important;
+  }
+  .perspective-grid {
+    animation: none !important;
+    display: none !important;
+  }
+  .animate-shimmer {
+    animation: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

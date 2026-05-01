@@ -127,24 +127,14 @@ const Home = () => {
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-96 bg-gradient-to-b from-primary/15 to-transparent opacity-40" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
-        {/* Animated glow orbs */}
-        <motion.div
-          className="pointer-events-none absolute -right-40 top-32 z-0 h-80 w-80 rounded-full blur-3xl opacity-20"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(42 92% 58% / 0.5), transparent 70%)",
-          }}
-          animate={{ y: [0, 30, 0], x: [0, 20, 0] }}
-          transition={{ duration: 8, repeat: Infinity }}
+        {/* Decorative orbs - static on mobile, animated on desktop via CSS */}
+        <div
+          className="pointer-events-none absolute -right-40 top-32 z-0 h-80 w-80 rounded-full blur-3xl opacity-20 hidden md:block"
+          style={{ background: "radial-gradient(circle, hsl(42 92% 58% / 0.5), transparent 70%)" }}
         />
-        <motion.div
-          className="pointer-events-none absolute -left-32 bottom-40 z-0 h-72 w-72 rounded-full blur-3xl opacity-15"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)",
-          }}
-          animate={{ y: [0, -30, 0], x: [0, -20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
+        <div
+          className="pointer-events-none absolute -left-32 bottom-40 z-0 h-72 w-72 rounded-full blur-3xl opacity-15 hidden md:block"
+          style={{ background: "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)" }}
         />
 
         <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-8 py-10 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
@@ -256,14 +246,9 @@ const Home = () => {
             className="relative lg:col-span-5"
           >
             {/* Card background glow */}
-            <motion.div
-              className="absolute inset-0 rounded-2xl blur-2xl opacity-30 -z-10"
-              style={{
-                background:
-                  "linear-gradient(135deg, hsl(42 92% 58% / 0.4), hsl(18 82% 54% / 0.3))",
-              }}
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 4, repeat: Infinity }}
+            <div
+              className="absolute inset-0 rounded-2xl blur-2xl opacity-30 -z-10 hidden md:block"
+              style={{ background: "linear-gradient(135deg, hsl(42 92% 58% / 0.4), hsl(18 82% 54% / 0.3))" }}
             />
 
             <div className="premium-card mx-auto max-w-md p-5 sm:p-7 md:p-8 border-primary/30 backdrop-blur-sm">
@@ -276,12 +261,10 @@ const Home = () => {
                     Build rõ, ship gọn.
                   </div>
                 </div>
-                <motion.img
+                <img
                   src={logo}
                   alt="ShipCode"
                   className="h-16 w-16 rounded-xl object-cover shadow-elegant"
-                  animate={{ rotate: [0, -5, 5, 0] }}
-                  transition={{ duration: 4, repeat: Infinity }}
                 />
               </div>
 
@@ -644,14 +627,9 @@ const Home = () => {
         className="container py-20 text-center md:py-28 relative"
       >
         {/* Final CTA glow background */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 blur-3xl opacity-20 -z-10"
-          style={{
-            background:
-              "radial-gradient(circle, hsl(42 92% 58% / 0.3), transparent 70%)",
-          }}
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 6, repeat: Infinity }}
+        <div
+          className="pointer-events-none absolute inset-0 blur-3xl opacity-20 -z-10 hidden md:block"
+          style={{ background: "radial-gradient(circle, hsl(42 92% 58% / 0.3), transparent 70%)" }}
         />
 
         <motion.div
@@ -676,12 +654,7 @@ const Home = () => {
             >
               <Link to="/lien-he" className="gap-3">
                 <span className="text-lg">Bắt đầu dự án</span>
-                <motion.span
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </motion.span>
+                <ArrowRight className="h-5 w-5" />
               </Link>
             </Button>
           </motion.div>

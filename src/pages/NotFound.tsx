@@ -18,22 +18,16 @@ const NotFound = () => {
         {/* Animated mesh gradient background */}
         <motion.div
           className="absolute inset-0 mesh-gradient opacity-25 -z-10"
-          animate={{ scale: [1, 1.15, 1], rotate: [0, 3, 0] }}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
         />
 
-        {/* Animated floating orbs */}
-        <motion.div
-          className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-20"
+        {/* Decorative orbs - hidden on mobile */}
+        <div
+          className="pointer-events-none absolute -top-20 -right-20 w-72 h-72 rounded-full blur-3xl opacity-20 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(42 92% 58% / 0.5), transparent 70%)" }}
-          animate={{ y: [0, 40, 0], x: [0, -20, 0] }}
-          transition={{ duration: 8, repeat: Infinity }}
         />
-        <motion.div
-          className="pointer-events-none absolute -bottom-20 -left-20 w-60 h-60 rounded-full blur-3xl opacity-15"
+        <div
+          className="pointer-events-none absolute -bottom-20 -left-20 w-60 h-60 rounded-full blur-3xl opacity-15 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)" }}
-          animate={{ y: [0, -30, 0], x: [0, 20, 0] }}
-          transition={{ duration: 10, repeat: Infinity, delay: 1 }}
         />
 
         {/* Animated compass icon */}
@@ -44,19 +38,8 @@ const NotFound = () => {
           className="mb-6"
         >
           <div className="relative">
-            <motion.div
-              className="absolute inset-0 rounded-full blur-xl"
-              style={{ background: "hsl(42 92% 58% / 0.3)" }}
-              animate={{ scale: [1, 1.4, 1], opacity: [0.3, 0.6, 0.3] }}
-              transition={{ duration: 3, repeat: Infinity }}
-            />
             <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/15 to-transparent backdrop-blur-sm">
-              <motion.div
-                animate={{ rotate: [0, 15, -15, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
-                <Compass className="h-10 w-10 text-primary" />
-              </motion.div>
+              <Compass className="h-10 w-10 text-primary" />
             </div>
           </div>
         </motion.div>
@@ -69,14 +52,6 @@ const NotFound = () => {
           className="relative select-none"
         >
           <div className="font-display text-[10rem] font-black leading-none text-gradient md:text-[14rem] relative">
-            <motion.span
-              className="absolute inset-0 text-gradient opacity-30 blur-sm"
-              animate={{ x: [-2, 2, -2], y: [1, -1, 1] }}
-              transition={{ duration: 0.3, repeat: Infinity, repeatType: "mirror" }}
-              aria-hidden
-            >
-              404
-            </motion.span>
             404
           </div>
         </motion.div>

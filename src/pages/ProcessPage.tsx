@@ -87,12 +87,7 @@ export const ProcessContent = () => {
               transition={{ type: "spring", stiffness: 300 }}
             >
               <s.icon className="h-5 w-5 text-primary md:h-6 md:w-6" />
-              {/* Pulse ring */}
-              <motion.div
-                className="absolute inset-0 rounded-md border border-primary/20"
-                animate={{ scale: [1, 1.4, 1], opacity: [0.5, 0, 0.5] }}
-                transition={{ duration: 3, repeat: Infinity, delay: i * 0.5 }}
-              />
+
             </motion.div>
 
             {/* Connection dot between line and card */}

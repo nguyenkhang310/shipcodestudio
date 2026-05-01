@@ -38,7 +38,7 @@ export const BackgroundScene = () => {
   }, []);
 
   return (
-    <div ref={sceneRef} className="background-scene" aria-hidden="true">
+    <div ref={sceneRef} className="background-scene hidden md:block" aria-hidden="true">
       <div className="background-scene__vignette" />
       <div className="background-scene__depth">
         <div className="background-scene__horizon" />

@@ -162,12 +162,7 @@ export const Footer = () => {
         <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row">
           <div className="flex items-center gap-1">
             © {new Date().getFullYear()} ShipCode. Made with
-            <motion.span
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-            >
-              <Heart className="w-3.5 h-3.5 text-red-400 fill-red-400 inline mx-0.5" />
-            </motion.span>
+            <Heart className="w-3.5 h-3.5 text-red-400 fill-red-400 inline mx-0.5" />
             in Vietnam.
           </div>
           <div className="flex items-center gap-6">

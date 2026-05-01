@@ -102,7 +102,7 @@ const ContactPage = () => {
         <div className="grid items-start gap-6 lg:grid-cols-12 lg:gap-8">
           {/* Sidebar */}
           <motion.aside
-            className="space-y-5 lg:col-span-5"
+            className="space-y-3 sm:space-y-5 order-2 lg:order-1 lg:col-span-5"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -123,7 +123,7 @@ const ContactPage = () => {
                 </>
               );
 
-              const className = "premium-card group flex items-center gap-4 p-5 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10 md:p-6";
+              const className = "premium-card group flex items-center gap-3 sm:gap-4 p-3.5 sm:p-5 transition-all duration-300 hover:border-primary/40 md:p-6";
 
               if (!contact.href) {
                 return (
@@ -180,17 +180,13 @@ const ContactPage = () => {
           {/* Form */}
           <motion.form
             onSubmit={onSubmit}
-            className="premium-card relative overflow-hidden space-y-5 p-6 shadow-elegant md:p-8 lg:col-span-7"
+            className="premium-card relative overflow-hidden space-y-5 p-4 sm:p-6 shadow-elegant md:p-8 order-1 lg:order-2 lg:col-span-7"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {/* Decorative glow */}
-            <motion.div
-              className="absolute -top-20 -right-20 h-64 w-64 mesh-gradient opacity-25"
-              animate={{ scale: [1, 1.1, 1], rotate: [0, 5, 0] }}
-              transition={{ duration: 8, repeat: Infinity }}
-            />
+            {/* Decorative glow - hidden on mobile for performance */}
+            <div className="absolute -top-20 -right-20 h-64 w-64 mesh-gradient opacity-25 hidden md:block" />
 
             <AnimatePresence mode="wait">
               {submitted ? (
@@ -356,12 +352,7 @@ const ContactPage = () => {
                   ) : (
                     <>
                       Gửi yêu cầu
-                      <motion.span
-                        animate={{ x: [0, 3, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity }}
-                      >
-                        <Send className="h-4 w-4" />
-                      </motion.span>
+                      <Send className="h-4 w-4" />
                     </>
                   )}
                 </Button>
