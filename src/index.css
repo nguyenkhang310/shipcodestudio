@@ -833,21 +833,21 @@
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.875rem;
     line-height: 1.12;
     letter-spacing: 0;
   }
 
   .display-heading {
-    font-size: 1.75rem;
-    line-height: 1.15;
+    font-size: 1.5rem;
+    line-height: 1.18;
     letter-spacing: 0;
   }
 
   .section-copy {
     color: hsl(var(--muted-foreground));
-    font-size: 1rem;
-    line-height: 1.75;
+    font-size: 0.9375rem;
+    line-height: 1.7;
   }
 
   .chip {
@@ -857,19 +857,19 @@
     border: 1px solid hsl(var(--border) / 0.9);
     background: hsl(var(--muted) / 0.42);
     color: hsl(var(--foreground) / 0.88);
-    font-size: 0.8125rem;
+    font-size: 0.75rem;
     font-weight: 600;
     line-height: 1;
-    padding: 0.625rem 0.875rem;
+    padding: 0.5rem 0.75rem;
   }
 
   .icon-box {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.625rem;
     border: 1px solid hsl(var(--primary) / 0.22);
     background: hsl(var(--primary) / 0.1);
   }
@@ -1145,11 +1145,26 @@
 
 @media (min-width: 640px) {
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 
   .display-heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .section-copy {
+    font-size: 1rem;
+  }
+
+  .chip {
+    font-size: 0.8125rem;
+    padding: 0.625rem 0.875rem;
+  }
+
+  .icon-box {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
   }
 }
 

@@ -154,13 +154,13 @@ export const Navbar = () => {
 
       {open && (
         <motion.div
-          className="lg:hidden border-t border-primary/30 bg-gradient-to-b from-background/98 to-background backdrop-blur-xl"
+          className="lg:hidden border-t border-primary/30 bg-background/98 backdrop-blur-xl max-h-[calc(100svh-72px)] overflow-y-auto"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.2 }}
         >
-          <ul className="container py-6 space-y-2">
+          <ul className="container py-4 sm:py-6 space-y-1 sm:space-y-2">
             {links.map((l) => (
               <li key={l.to}>
                 {l.isHash ? (

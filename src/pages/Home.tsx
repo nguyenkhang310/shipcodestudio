@@ -105,9 +105,9 @@ const SectionIntro = ({
   title,
   description,
 }: SectionIntroProps) => (
-  <div className="mb-12 grid gap-6 md:mb-14 md:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] md:items-end">
+  <div className="mb-8 sm:mb-12 grid gap-4 sm:gap-6 md:mb-14 md:grid-cols-[minmax(0,1fr)_minmax(280px,420px)] md:items-end">
     <div>
-      <div className="section-kicker mb-5">
+      <div className="section-kicker mb-3 sm:mb-5">
         {index} · {eyebrow}
       </div>
       <h2 className="font-display font-bold display-heading text-balance">
@@ -137,8 +137,8 @@ const Home = () => {
           style={{ background: "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)" }}
         />
 
-        <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-6 py-8 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
-          <div className="space-y-8 lg:col-span-7">
+        <div className="container relative z-10 grid min-h-[calc(100svh-72px)] items-center gap-6 py-6 sm:py-8 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
+          <div className="space-y-6 sm:space-y-8 lg:col-span-7">
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -156,7 +156,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.08 }}
-              className="font-display hero-title font-extrabold text-balance text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
+              className="font-display hero-title font-extrabold text-balance"
             >
               Giải pháp phần mềm{" "}
               <span className="text-gradient animate-pulse block mt-2">
@@ -215,7 +215,7 @@ const Home = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.35 }}
-              className="grid max-w-2xl grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 border-t border-border/50 pt-4 sm:pt-6 sm:gap-4 sm:pt-8"
+              className="grid max-w-2xl grid-cols-3 gap-2 sm:gap-3 border-t border-border/50 pt-4 sm:pt-6 md:pt-8"
             >
               {[
                 { value: "99.9%", label: "Uptime hệ thống" },
@@ -228,7 +228,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05, y: -4 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className="font-display text-lg sm:text-2xl md:text-3xl font-bold text-gradient">
+                  <div className="font-display text-base sm:text-2xl md:text-3xl font-bold text-gradient">
                     {s.value}
                   </div>
                   <div className="mt-1 sm:mt-2 text-[11px] sm:text-xs text-muted-foreground group-hover:text-foreground/80 transition-colors">
@@ -251,24 +251,24 @@ const Home = () => {
               style={{ background: "linear-gradient(135deg, hsl(42 92% 58% / 0.4), hsl(18 82% 54% / 0.3))" }}
             />
 
-            <div className="premium-card mx-auto max-w-md p-5 sm:p-7 md:p-8 border-primary/30 backdrop-blur-sm">
-              <div className="flex items-center justify-between gap-4 border-b border-primary/20 pb-6 mb-6">
+            <div className="premium-card mx-auto max-w-md p-4 sm:p-6 md:p-8 border-primary/30 backdrop-blur-sm">
+              <div className="flex items-center justify-between gap-3 sm:gap-4 border-b border-primary/20 pb-4 sm:pb-6 mb-4 sm:mb-6">
                 <div>
                   <div className="text-xs font-mono uppercase tracking-[0.14em] text-primary font-bold">
                     ShipCode Studio
                   </div>
-                  <div className="mt-3 font-display text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-orange-400 bg-clip-text text-transparent">
+                  <div className="mt-2 sm:mt-3 font-display text-xl sm:text-3xl font-bold bg-gradient-to-r from-primary via-primary/80 to-orange-400 bg-clip-text text-transparent">
                     Build rõ, ship gọn.
                   </div>
                 </div>
                 <img
                   src={logo}
                   alt="ShipCode"
-                  className="h-16 w-16 rounded-xl object-cover shadow-elegant"
+                  className="h-12 w-12 sm:h-16 sm:w-16 rounded-xl object-cover shadow-elegant"
                 />
               </div>
 
-              <div className="grid gap-4 py-6">
+              <div className="grid gap-3 sm:gap-4 py-4 sm:py-6">
                 {[
                   {
                     icon: Code2,
@@ -288,7 +288,7 @@ const Home = () => {
                 ].map((item, idx) => (
                   <motion.div
                     key={item.label}
-                    className="flex items-center gap-4 rounded-lg border border-primary/15 bg-gradient-to-br from-primary/6 to-transparent p-4 hover:border-primary/35 hover:bg-primary/12 transition-all duration-300 group cursor-pointer"
+                    className="flex items-center gap-3 sm:gap-4 rounded-lg border border-primary/15 bg-gradient-to-br from-primary/6 to-transparent p-3 sm:p-4 hover:border-primary/35 hover:bg-primary/12 transition-all duration-300 group cursor-pointer"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.3 + idx * 0.1 }}
@@ -325,7 +325,7 @@ const Home = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="container border-b border-border/50 py-20 md:py-28"
+        className="container border-b border-border/50 py-12 sm:py-16 md:py-28"
       >
         <SectionIntro
           index="01"
@@ -350,7 +350,7 @@ const Home = () => {
 
       <section
         id="quy-trinh"
-        className="container border-b border-border/70 py-20 md:py-24"
+        className="container border-b border-border/70 py-12 sm:py-16 md:py-24"
       >
         <SectionIntro
           index="02"
@@ -367,7 +367,7 @@ const Home = () => {
 
       <section
         id="bang-gia"
-        className="container border-b border-border/70 py-20 md:py-24"
+        className="container border-b border-border/70 py-12 sm:py-16 md:py-24"
       >
         <SectionIntro
           index="03"
@@ -389,7 +389,7 @@ const Home = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="container border-b border-border/50 py-20 md:py-28"
+        className="container border-b border-border/50 py-12 sm:py-16 md:py-28"
       >
         <SectionIntro
           index="04"
@@ -478,7 +478,7 @@ const Home = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="container border-b border-border/50 py-20 md:py-28"
+        className="container border-b border-border/50 py-12 sm:py-16 md:py-28"
       >
         <SectionIntro
           index="05"
@@ -500,15 +500,15 @@ const Home = () => {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
           >
-            <div className="premium-card flex h-full flex-col items-center p-7 hover:border-primary/40 transition-all duration-300 group">
-              <div className="mb-6 h-28 w-28 rounded-full bg-gradient-primary p-1 shadow-elegant group-hover:shadow-lg group-hover:shadow-primary/40 transition-all duration-300">
+            <div className="premium-card flex h-full flex-col items-center p-5 sm:p-7 hover:border-primary/40 transition-all duration-300 group">
+              <div className="mb-4 sm:mb-6 h-20 w-20 sm:h-28 sm:w-28 rounded-full bg-gradient-primary p-1 shadow-elegant group-hover:shadow-lg group-hover:shadow-primary/40 transition-all duration-300">
                 <img
                   src="https://avatars.githubusercontent.com/u/258641749?v=4"
                   alt="Nguyên Khang"
                   className="h-full w-full rounded-full border-4 border-background object-cover"
                 />
               </div>
-              <h3 className="mb-2 font-display text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3 className="mb-2 font-display text-2xl sm:text-3xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
                 Nguyên Khang
               </h3>
               <p className="mb-4 text-xs font-mono uppercase tracking-[0.14em] text-primary font-bold">
@@ -542,7 +542,7 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.25 + idx * 0.08 }}
-                className="premium-card group flex min-h-[160px] sm:min-h-[200px] flex-col justify-between p-5 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
+                className="premium-card group flex min-h-[140px] sm:min-h-[200px] flex-col justify-between p-4 sm:p-6 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/20"
                 whileHover={{ y: -4 }}
               >
                 <div>
@@ -592,7 +592,7 @@ const Home = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6 }}
-        className="border-b border-border/50 py-20 md:py-28 relative overflow-hidden"
+        className="border-b border-border/50 py-12 sm:py-16 md:py-28 relative overflow-hidden"
       >
         {/* Background glow effect */}
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/8 via-transparent to-transparent" />
@@ -624,7 +624,7 @@ const Home = () => {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, margin: "-100px" }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="container py-20 text-center md:py-28 relative"
+        className="container py-12 sm:py-16 text-center md:py-28 relative"
       >
         {/* Final CTA glow background */}
         <div

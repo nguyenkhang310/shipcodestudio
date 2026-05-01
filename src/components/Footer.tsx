@@ -27,12 +27,12 @@ const cols = [
 
 export const Footer = () => {
   return (
-    <footer className="relative mt-10 overflow-hidden border-t border-border/80 pb-10 pt-20 noise">
+    <footer className="relative mt-6 sm:mt-10 overflow-hidden border-t border-border/80 pb-8 sm:pb-10 pt-12 sm:pt-20 noise">
       <div className="absolute inset-0 aurora opacity-[0.55] -z-10" />
 
       <div className="container relative">
         {/* Animated shimmer watermark */}
-        <div className="mb-12 sm:mb-14 select-none overflow-hidden border-b border-border/70 pb-6 sm:pb-8 relative group">
+        <div className="mb-8 sm:mb-14 select-none overflow-hidden border-b border-border/70 pb-4 sm:pb-8 relative group">
           <div className="font-display text-3xl sm:text-4xl md:text-6xl lg:text-8xl xl:text-9xl font-black leading-none text-transparent bg-gradient-to-b from-foreground/12 to-transparent bg-clip-text relative">
             SHIPCODE
             {/* Shimmer overlay */}
@@ -58,7 +58,7 @@ export const Footer = () => {
           />
         </div>
 
-        <div className="grid gap-10 md:grid-cols-12 md:gap-12 mb-14">
+        <div className="grid gap-8 sm:gap-10 md:grid-cols-12 md:gap-12 mb-10 sm:mb-14">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3 mb-6">
               <motion.img
@@ -172,7 +172,7 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-sm text-muted-foreground md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-3 sm:gap-4 border-t border-border pt-6 sm:pt-8 text-xs sm:text-sm text-muted-foreground md:flex-row">
           <div className="flex items-center gap-1">
             © {new Date().getFullYear()} ShipCode. Made with
             <Heart className="w-3.5 h-3.5 text-red-400 fill-red-400 inline mx-0.5" />

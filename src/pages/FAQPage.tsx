@@ -49,15 +49,15 @@ const FAQPage = () => {
               <motion.div key={i} variants={itemVariants}>
                 <AccordionItem
                   value={`item-${i}`}
-                  className="premium-card px-5 transition-all duration-300 data-[state=open]:border-primary/40 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/10 hover:border-primary/25 md:px-6 group/faq"
+                  className="premium-card px-3.5 sm:px-5 md:px-6 transition-all duration-300 data-[state=open]:border-primary/40 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/10 hover:border-primary/25 group/faq"
                 >
-                  <AccordionTrigger className="gap-4 py-5 text-left font-display font-semibold hover:text-primary hover:no-underline transition-colors duration-300">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary font-mono text-xs font-bold shrink-0 group-data-[state=open]/faq:bg-primary group-data-[state=open]/faq:text-primary-foreground group-data-[state=open]/faq:border-primary/60 transition-all duration-300">
+                  <AccordionTrigger className="gap-3 sm:gap-4 py-4 sm:py-5 text-left font-display text-sm sm:text-base font-semibold hover:text-primary hover:no-underline transition-colors duration-300">
+                    <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-lg border border-primary/25 bg-primary/10 text-primary font-mono text-[10px] sm:text-xs font-bold shrink-0 group-data-[state=open]/faq:bg-primary group-data-[state=open]/faq:text-primary-foreground group-data-[state=open]/faq:border-primary/60 transition-all duration-300">
                       {(i + 1).toString().padStart(2, "0")}
                     </span>
                     <span className="flex-1">{f.q}</span>
                   </AccordionTrigger>
-                  <AccordionContent className="pb-5 pl-12 leading-7 text-muted-foreground">
+                  <AccordionContent className="pb-4 sm:pb-5 pl-10 sm:pl-12 text-sm leading-6 sm:leading-7 text-muted-foreground">
                     <div className="border-l-2 border-primary/20 pl-4">
                       {f.a}
                     </div>
@@ -74,7 +74,7 @@ const FAQPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="mt-10 grid grid-cols-3 gap-4"
+          className="mt-8 sm:mt-10 grid grid-cols-3 gap-2 sm:gap-4"
         >
           {[
             { value: "500+", label: "Khách hàng tin tưởng" },
@@ -84,9 +84,9 @@ const FAQPage = () => {
             <motion.div
               key={stat.label}
               whileHover={{ y: -2 }}
-              className="rounded-lg border border-border/60 bg-card/40 p-4 text-center transition-all hover:border-primary/30 hover:bg-primary/5"
+              className="rounded-lg border border-border/60 bg-card/40 p-2.5 sm:p-4 text-center transition-all hover:border-primary/30 hover:bg-primary/5"
             >
-              <div className="font-display text-xl font-bold text-gradient md:text-2xl">{stat.value}</div>
+              <div className="font-display text-lg sm:text-xl font-bold text-gradient md:text-2xl">{stat.value}</div>
               <div className="mt-1 text-xs text-muted-foreground">{stat.label}</div>
             </motion.div>
           ))}
@@ -98,7 +98,7 @@ const FAQPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="premium-card relative mt-14 overflow-hidden p-8 text-center md:p-10"
+          className="premium-card relative mt-10 sm:mt-14 overflow-hidden p-6 sm:p-8 text-center md:p-10"
         >
           <div className="absolute inset-0 mesh-gradient opacity-25" />
 

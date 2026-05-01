@@ -240,8 +240,8 @@ const PortfolioPage = () => {
                     {p.category}
                   </div>
                 </div>
-                <div className="p-4 md:p-5 md:p-6">
-                  <h3 className="font-display font-semibold text-base md:text-lg mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
+                <div className="p-3.5 sm:p-5 md:p-6">
+                  <h3 className="font-display font-semibold text-sm sm:text-base md:text-lg mb-1.5 sm:mb-2 text-foreground group-hover:text-primary transition-colors duration-300">
                     {p.title}
                   </h3>
                   <p className="text-xs md:text-sm text-muted-foreground mb-4 line-clamp-3 leading-6 group-hover:text-foreground/70 transition-colors duration-300">
@@ -285,7 +285,7 @@ const PortfolioPage = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.2, duration: 0.5 }}
-          className="premium-card relative mt-16 overflow-hidden p-8 text-center md:p-10"
+          className="premium-card relative mt-10 sm:mt-16 overflow-hidden p-6 sm:p-8 text-center md:p-10"
         >
           <div className="absolute inset-0 mesh-gradient opacity-25" />
           <motion.div

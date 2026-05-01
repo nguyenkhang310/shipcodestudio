@@ -87,7 +87,7 @@ const stepVariants = {
 export const ProcessContent = () => {
   return (
     <>
-      <div className="relative ml-2 sm:ml-4 md:ml-8 space-y-6 md:space-y-8 pb-6 md:pb-8">
+      <div className="relative ml-1 sm:ml-4 md:ml-8 space-y-4 sm:space-y-6 md:space-y-8 pb-4 sm:pb-8">
         {/* Animated gradient timeline line */}
         <div className="absolute left-0 top-0 bottom-0 w-px overflow-hidden">
           <motion.div
@@ -126,9 +126,9 @@ export const ProcessContent = () => {
             {/* Connection dot between line and card */}
             <div className="absolute -left-[3px] top-5 h-1.5 w-1.5 rounded-full bg-primary/60 md:-left-[4px]" />
 
-            <div className="premium-card group p-3 sm:p-4 md:p-6 md:p-7 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10">
+            <div className="premium-card group p-3 sm:p-4 md:p-7 transition-all duration-300 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/10">
               <div className="mb-4 flex flex-col justify-between gap-4 md:flex-row md:items-center">
-                <h3 className="font-display text-xl sm:text-2xl font-bold text-foreground transition-colors group-hover:text-primary md:text-3xl">
+                <h3 className="font-display text-lg sm:text-2xl font-bold text-foreground transition-colors group-hover:text-primary md:text-3xl">
                   {s.title}
                 </h3>
                 <motion.div
@@ -150,16 +150,16 @@ export const ProcessContent = () => {
                 {s.details.map((d, dIdx) => (
                   <motion.div
                     key={d}
-                    className="flex items-center gap-3 rounded-md border border-border/60 bg-muted/25 p-4 transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 group/detail"
+                    className="flex items-center gap-2 sm:gap-3 rounded-md border border-border/60 bg-muted/25 p-2.5 sm:p-4 transition-all duration-300 hover:border-primary/30 hover:bg-primary/5 group/detail"
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 + dIdx * 0.05 }}
                   >
-                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 group-hover/detail:bg-primary/20 transition-colors">
+                    <div className="flex h-6 w-6 sm:h-8 sm:w-8 shrink-0 items-center justify-center rounded-md bg-primary/10 group-hover/detail:bg-primary/20 transition-colors">
                       <CheckCircle2 className="h-4 w-4 text-primary" />
                     </div>
-                    <span className="text-sm font-medium group-hover/detail:text-foreground transition-colors">
+                    <span className="text-xs sm:text-sm font-medium group-hover/detail:text-foreground transition-colors">
                       {d}
                     </span>
                   </motion.div>

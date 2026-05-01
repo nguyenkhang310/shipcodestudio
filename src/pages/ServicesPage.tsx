@@ -175,21 +175,21 @@ const services = [
 export const ServicesContent = () => {
   return (
     <>
-      <div className="grid md:grid-cols-2 gap-4 md:gap-6">
+      <div className="grid gap-4 md:grid-cols-2 md:gap-6">
         {services.map((s, i) => (
           <article
             key={s.title}
-            className="premium-card group flex flex-col p-4 sm:p-6 md:p-6 md:p-7 transition-all duration-300 hover:border-primary/40"
+            className="premium-card group flex flex-col p-4 sm:p-6 md:p-7 transition-all duration-300 hover:border-primary/40"
           >
             <div className="absolute -top-20 -right-20 w-64 h-64 mesh-gradient opacity-0 group-hover:opacity-40 transition-opacity duration-700" />
 
             {s.tag && (
-              <span className="absolute top-5 right-5 z-10 rounded-md bg-gradient-fire px-3 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-primary-foreground">
+              <span className="absolute top-3 right-3 sm:top-5 sm:right-5 z-10 rounded-md bg-gradient-fire px-2 py-0.5 sm:px-3 sm:py-1 text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.12em] text-primary-foreground">
                 {s.tag}
               </span>
             )}
 
-            <div className="relative flex flex-1 items-start gap-5">
+            <div className="relative flex flex-1 items-start gap-3 sm:gap-5">
               <div className="icon-box shrink-0 transition-colors group-hover:bg-primary">
                 <s.icon className="h-6 w-6 text-primary transition-colors group-hover:text-primary-foreground" />
               </div>
@@ -197,13 +197,13 @@ export const ServicesContent = () => {
                 <span className="font-mono text-xs text-primary/60">
                   0{i + 1}
                 </span>
-                <h3 className="font-display font-bold text-2xl mb-3 mt-1 text-balance">
+                <h3 className="font-display font-bold text-lg sm:text-2xl mb-2 sm:mb-3 mt-1 text-balance">
                   {s.title}
                 </h3>
-                <p className="text-sm text-muted-foreground leading-7 mb-5">
+                <p className="text-xs sm:text-sm text-muted-foreground leading-6 sm:leading-7 mb-4 sm:mb-5">
                   {s.desc}
                 </p>
-                <ul className="space-y-2 mb-6 flex-1">
+                <ul className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6 flex-1">
                   {s.deliverables.map((d) => (
                     <li key={d} className="flex items-center gap-2 text-sm">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -280,7 +280,7 @@ export const ServicesContent = () => {
       </div>
 
       {/* CTA */}
-      <div className="premium-card mt-12 md:mt-16 p-6 md:p-8 text-center">
+      <div className="premium-card mt-8 sm:mt-12 md:mt-16 p-5 sm:p-6 md:p-8 text-center">
         <div className="absolute inset-0 mesh-gradient opacity-25" />
         <div className="relative">
           <h2 className="font-display font-bold text-2xl sm:text-3xl md:text-4xl mb-4 text-balance">

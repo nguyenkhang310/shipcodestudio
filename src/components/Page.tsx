@@ -25,13 +25,13 @@ interface PageHeaderProps {
 }
 
 export const PageHeader = ({ eyebrow, title, description, index }: PageHeaderProps) => (
-  <header className="container relative pb-14 md:pb-16">
+  <header className="container relative pb-8 sm:pb-12 md:pb-16">
     <div className="absolute -top-12 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent -z-10" />
 
-    <div className="flex items-start gap-5 md:gap-6">
+    <div className="flex items-start gap-4 md:gap-6">
       {index && (
         <motion.span
-          className="font-mono text-sm text-primary/60 mt-3 hidden md:block shrink-0"
+          className="font-mono text-sm text-primary/60 mt-2 hidden md:block shrink-0"
           initial={{ opacity: 0, x: -10 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
@@ -39,9 +39,9 @@ export const PageHeader = ({ eyebrow, title, description, index }: PageHeaderPro
           [{index}]
         </motion.span>
       )}
-      <div className="flex-1">
+      <div className="flex-1 min-w-0">
         <motion.div
-          className="section-kicker mb-6"
+          className="section-kicker mb-4 sm:mb-6"
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.05 }}
@@ -58,7 +58,7 @@ export const PageHeader = ({ eyebrow, title, description, index }: PageHeaderPro
         </motion.h1>
         {description && (
           <motion.p
-            className="section-copy mt-6 max-w-2xl"
+            className="section-copy mt-4 sm:mt-6 max-w-2xl"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -71,7 +71,7 @@ export const PageHeader = ({ eyebrow, title, description, index }: PageHeaderPro
 
     {/* Animated underline */}
     <motion.div
-      className="absolute bottom-0 left-6 right-6 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
+      className="absolute bottom-0 left-4 right-4 sm:left-6 sm:right-6 h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"
       initial={{ scaleX: 0 }}
       animate={{ scaleX: 1 }}
       transition={{ duration: 0.8, delay: 0.3 }}
