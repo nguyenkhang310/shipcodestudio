@@ -123,7 +123,7 @@ const Home = () => {
     <Page>
       <section className="relative isolate -mt-24 overflow-hidden border-b border-border/70 pt-20 md:-mt-28 md:pt-28">
         {/* Enhanced background with multiple gradients */}
-        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-primary/8 via-background/40 to-background/95" /}
+        <div className="pointer-events-none absolute inset-0 z-0 bg-gradient-to-b from-primary/8 via-background/40 to-background/95" />
         <div className="pointer-events-none absolute inset-x-0 top-0 z-0 h-96 bg-gradient-to-b from-primary/15 to-transparent opacity-40" />
         <div className="pointer-events-none absolute inset-x-0 bottom-0 z-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
 
@@ -131,11 +131,11 @@ const Home = () => {
         <div
           className="pointer-events-none absolute -right-40 top-32 z-0 h-80 w-80 rounded-full blur-3xl opacity-20 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(42 92% 58% / 0.5), transparent 70%)" }}
-        /}
+        />
         <div
           className="pointer-events-none absolute -left-32 bottom-40 z-0 h-72 w-72 rounded-full blur-3xl opacity-15 hidden md:block"
           style={{ background: "radial-gradient(circle, hsl(358 62% 48% / 0.4), transparent 70%)" }}
-        /}
+        />
 
         <div className="container relative z-10 grid min-h-[calc(100vh-72px)] items-center gap-6 py-8 md:gap-10 md:py-16 lg:grid-cols-12 lg:py-20">
           <div className="space-y-8 lg:col-span-7">
