@@ -15,7 +15,7 @@ export const contactInfo = {
   tiktokHandle: "@shipcodestudio",
   tiktokUrl:
     "https://www.tiktok.com/@shipcodestudio?_r=1&_t=ZS-95q52puiFTI",
-  email: "nguyenkhang03102006@gmail.com",
+  email: "nguyenkhang031006@gmail.com",
   office: "Hồ Chí Minh",
 } as const;
 

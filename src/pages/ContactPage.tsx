@@ -82,8 +82,9 @@ const ContactPage = () => {
       } else {
         throw new Error(data.message || "Gửi thất bại");
       }
-    } catch {
-      toast.error("Không thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo.");
+    } catch (error: any) {
+      console.error("Lỗi submit form:", error);
+      toast.error(error.message || "Không thể gửi yêu cầu. Vui lòng thử lại hoặc liên hệ trực tiếp qua Zalo.");
     } finally {
       setLoading(false);
     }
