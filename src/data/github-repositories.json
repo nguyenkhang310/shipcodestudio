@@ -1,0 +1,109 @@
+{
+  "owner": "nguyenkhang310",
+  "repositories": [
+    {
+      "name": "ecommerce-warehouse-dsa",
+      "url": "https://github.com/nguyenkhang310/ecommerce-warehouse-dsa",
+      "description": null,
+      "language": "TypeScript",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "shipcode-sellerpilot",
+      "url": "https://github.com/nguyenkhang310/shipcode-sellerpilot",
+      "description": "Trợ lý AI dành cho chủ shop, kết hợp ứng dụng quản lý trên iOS và sàn thương mại điện tử",
+      "language": "Python",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "phantichnhadathcm",
+      "url": "https://github.com/nguyenkhang310/phantichnhadathcm",
+      "description": null,
+      "language": "R",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "climate-lab",
+      "url": "https://github.com/nguyenkhang310/climate-lab",
+      "description": null,
+      "language": "HTML",
+      "fork": false,
+      "homepage": "https://climatelab-shipcode.vercel.app/"
+    },
+    {
+      "name": "rea",
+      "url": "https://github.com/nguyenkhang310/rea",
+      "description": "Reverse engineer anything with agents, from app behavior down to native binaries.",
+      "language": null,
+      "fork": true,
+      "homepage": "https://rea.tools"
+    },
+    {
+      "name": "hequantridata",
+      "url": "https://github.com/nguyenkhang310/hequantridata",
+      "description": null,
+      "language": "TypeScript",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "shipcodestudio",
+      "url": "https://github.com/nguyenkhang310/shipcodestudio",
+      "description": null,
+      "language": "TypeScript",
+      "fork": false,
+      "homepage": "https://shipcodestudio.vercel.app"
+    },
+    {
+      "name": "tmdtuth",
+      "url": "https://github.com/nguyenkhang310/tmdtuth",
+      "description": null,
+      "language": "Python",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "SaigonRentMapAnalytics",
+      "url": "https://github.com/nguyenkhang310/SaigonRentMapAnalytics",
+      "description": null,
+      "language": "TypeScript",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "smart-fridge-iot",
+      "url": "https://github.com/nguyenkhang310/smart-fridge-iot",
+      "description": null,
+      "language": "Python",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "hcmuteweb",
+      "url": "https://github.com/nguyenkhang310/hcmuteweb",
+      "description": null,
+      "language": "HTML",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "stroke-risk-predictor",
+      "url": "https://github.com/nguyenkhang310/stroke-risk-predictor",
+      "description": null,
+      "language": "Python",
+      "fork": false,
+      "homepage": ""
+    },
+    {
+      "name": "phathienbiensovn",
+      "url": "https://github.com/nguyenkhang310/phathienbiensovn",
+      "description": null,
+      "language": "Jupyter Notebook",
+      "fork": false,
+      "homepage": ""
+    }
+  ]
+}

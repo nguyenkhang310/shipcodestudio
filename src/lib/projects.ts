@@ -1,0 +1,261 @@
+export type ProjectType = "web" | "ai" | "data" | "iot" | "tool";
+export interface Project {
+  id: string;
+  name: string;
+  category: string;
+  type: ProjectType;
+  description: string;
+  repo: string;
+  stack: string[];
+  visual: string;
+  color: string;
+  image: string;
+  imageKind: "actual" | "illustration" | "capture";
+  video: string;
+  note: string;
+  demo: string;
+  fork?: boolean;
+  featured?: boolean;
+}
+
+export const projects: Project[] = [
+  {
+    id: "sellerpilot",
+    name: "SellerPilot",
+    category: "Ứng dụng di động · AI",
+    type: "ai",
+    description:
+      "Trợ lý AI cho chủ shop, kết nối ứng dụng iOS với hệ thống thương mại điện tử mô phỏng.",
+    repo: "shipcode-sellerpilot",
+    stack: ["React Native", "FastAPI", "TypeScript"],
+    visual: "sellerpilot",
+    color: "sand",
+    image: "/projects/sellerpilot.jpg",
+    imageKind: "actual",
+    video: "/media/introducing.mp4",
+    note: "Video demo dự án. Hệ thống mô phỏng, chưa kết nối API sàn và thanh toán thực tế.",
+    demo: "",
+    featured: true,
+  },
+  {
+    id: "climate",
+    name: "Climate Lab",
+    category: "Trực quan hóa dữ liệu",
+    type: "data",
+    description:
+      "Dashboard tương tác để phân tích nhiệt độ, khí thải CO₂ và mô hình dự đoán khí hậu.",
+    repo: "climate-lab",
+    stack: ["Python", "Dash", "Plotly"],
+    visual: "climate",
+    color: "sage",
+    image: "/projects/climate-lab.jpg",
+    imageKind: "actual",
+    video: "/media/data-demo.mp4",
+    note: "Video từ bản demo dự án.",
+    demo: "https://climatelab-shipcode.vercel.app/",
+    featured: true,
+  },
+  {
+    id: "warehouse",
+    name: "Warehouse DSA",
+    category: "Quản lý kho · Cấu trúc dữ liệu",
+    type: "web",
+    description:
+      "Quản lý kho và đơn hàng bằng Hash Table, Heap, Trie và danh sách liên kết tự cài đặt trong C++17, kết nối giao diện React.",
+    repo: "ecommerce-warehouse-dsa",
+    stack: ["C++17", "React", "TypeScript"],
+    visual: "warehouse",
+    color: "sand",
+    image: "/projects/warehouse-cover.webp",
+    imageKind: "illustration",
+    video: "",
+    note: "Ảnh giới thiệu được tạo bằng AI theo đề tài, không phải ảnh chụp giao diện. Mã nguồn và kiến trúc xem trong repository.",
+    demo: "",
+  },
+  {
+    id: "property",
+    name: "Phân tích bất động sản TP.HCM",
+    category: "Phân tích dữ liệu · Dự đoán giá",
+    type: "data",
+    description:
+      "Thu thập, phân tích thống kê và triển khai ứng dụng R Shiny dự đoán giá bất động sản tại TP.HCM.",
+    repo: "phantichnhadathcm",
+    stack: ["R", "Shiny", "Leaflet"],
+    visual: "property",
+    color: "sage",
+    image: "/projects/property-demo.jpg",
+    imageKind: "actual",
+    video: "/media/property-demo.mp4",
+    note: "Video demo hệ thống phân tích và dự đoán giá bất động sản do Founder cung cấp.",
+    demo: "",
+  },
+  {
+    id: "fridge",
+    name: "Smart Fridge",
+    category: "IoT · Computer Vision",
+    type: "iot",
+    description:
+      "Giám sát nhiệt độ, độ ẩm và nhận diện trái cây bằng AI, kết nối ESP32 và Firebase.",
+    repo: "smart-fridge-iot",
+    stack: ["Python", "Flask", "YOLOv8", "ESP32"],
+    visual: "iot",
+    color: "blue",
+    image: "/projects/smart-fridge.webp",
+    imageKind: "actual",
+    video: "",
+    note: "Ảnh dashboard lấy từ repository gốc.",
+    demo: "",
+    featured: true,
+  },
+  {
+    id: "rentmap",
+    name: "Saigon Rent Map",
+    category: "Bản đồ · Dữ liệu cho thuê",
+    type: "web",
+    description:
+      "Phân tích giá thuê phòng trọ và căn hộ tại TP.HCM bằng bản đồ nhiệt, bộ lọc và xếp hạng khu vực.",
+    repo: "SaigonRentMapAnalytics",
+    stack: ["React", "TypeScript", "Leaflet", "Flask"],
+    visual: "rentmap",
+    color: "sage",
+    image: "/projects/rental-map-cover.webp",
+    imageKind: "illustration",
+    video: "",
+    note: "Ảnh giới thiệu được tạo bằng AI theo đề tài, không phải ảnh chụp ứng dụng. Công nghệ và luồng dữ liệu được mô tả trong README.",
+    demo: "",
+  },
+  {
+    id: "portal",
+    name: "UTH Portal",
+    category: "Cơ sở dữ liệu · Đăng ký học phần",
+    type: "web",
+    description:
+      "Mô phỏng đăng ký học phần với MySQL, stored procedures, triggers, API Flask và giao diện React; hỗ trợ đóng gói desktop.",
+    repo: "hequantridata",
+    stack: ["MySQL", "React", "TypeScript", "Flask"],
+    visual: "portal",
+    color: "blue",
+    image: "/projects/course-portal.webp",
+    imageKind: "actual",
+    video: "",
+    note: "Sơ đồ ERD lấy từ docs/erd.png trong repository gốc.",
+    demo: "",
+  },
+  {
+    id: "commerce",
+    name: "UTH Store",
+    category: "Thương mại điện tử",
+    type: "web",
+    description:
+      "Website bán hàng thời trang với danh mục, giỏ hàng, quản trị đơn hàng và các luồng thanh toán được mô tả trong mã nguồn.",
+    repo: "tmdtuth",
+    stack: ["Python", "Flask", "SQLAlchemy", "Jinja2"],
+    visual: "commerce",
+    color: "sand",
+    image: "/projects/fashion-store-cover.webp",
+    imageKind: "illustration",
+    video: "",
+    note: "Ảnh giới thiệu được tạo bằng AI theo đề tài thời trang, không phải ảnh chụp website hay xác nhận thanh toán thực tế.",
+    demo: "",
+  },
+  {
+    id: "student",
+    name: "Quản lý sinh viên",
+    category: "Ứng dụng web · Frontend",
+    type: "web",
+    description:
+      "Website mô phỏng quản lý sinh viên, điểm số và thông báo bằng HTML, CSS, JavaScript; lưu dữ liệu trên trình duyệt.",
+    repo: "hcmuteweb",
+    stack: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+    visual: "student",
+    color: "blue",
+    image: "/projects/student-management-cover.webp",
+    imageKind: "illustration",
+    video: "",
+    note: "Ảnh giới thiệu được tạo bằng AI theo đề tài, không phải ảnh chụp hệ thống. Dữ liệu ứng dụng lưu bằng localStorage.",
+    demo: "",
+  },
+  {
+    id: "stroke",
+    name: "StrokeRisk Predictor",
+    category: "Machine Learning · Sức khỏe",
+    type: "ai",
+    description:
+      "Ứng dụng Flask thử nghiệm mô hình Logistic Regression để ước tính nguy cơ đột quỵ từ các chỉ số đầu vào.",
+    repo: "stroke-risk-predictor",
+    stack: ["Python", "Flask", "scikit-learn"],
+    visual: "stroke",
+    color: "sage",
+    image: "/projects/stroke-risk-cover.webp",
+    imageKind: "illustration",
+    video: "",
+    note: "Ảnh giới thiệu được tạo bằng AI. Đây là đồ án nghiên cứu, không thay thế đánh giá hoặc chẩn đoán y khoa.",
+    demo: "",
+  },
+  {
+    id: "vision",
+    name: "Nhận diện biển số",
+    category: "Computer Vision",
+    type: "ai",
+    description: "Nhận diện và đọc biển số xe Việt Nam từ hình ảnh.",
+    repo: "phathienbiensovn",
+    stack: ["Python", "Jupyter Notebook", "Computer Vision"],
+    visual: "vision",
+    color: "lilac",
+    image: "/projects/license-vision.webp",
+    imageKind: "actual",
+    video: "",
+    note: "Kết quả nhận diện lấy từ repository gốc.",
+    demo: "",
+    featured: true,
+  },
+  {
+    id: "studio",
+    name: "ShipCode Studio",
+    category: "Website giới thiệu · Portfolio",
+    type: "web",
+    description:
+      "Website giới thiệu dịch vụ, video sản phẩm, dự án mã nguồn và thông tin Founder ShipCode.",
+    repo: "shipcodestudio",
+    stack: ["React", "TypeScript", "Vite"],
+    visual: "studio",
+    color: "sand",
+    image: "/projects/shipcode-studio.jpg",
+    imageKind: "capture",
+    video: "",
+    note: "Ảnh chụp phiên bản website ShipCode đang phát triển.",
+    demo: "https://shipcodestudio.vercel.app",
+  },
+  {
+    id: "rea",
+    name: "REA",
+    category: "Developer tools · Fork",
+    type: "tool",
+    description:
+      "Bản fork của công cụ reverse engineering với agent và MCP để phân tích ứng dụng, binary và hành vi khi chạy.",
+    repo: "rea",
+    stack: ["MCP", "Reverse Engineering", "Agents"],
+    visual: "rea",
+    color: "lilac",
+    image: "/projects/rea-analysis.webp",
+    imageKind: "actual",
+    video: "",
+    note: "Repository fork, không phải sản phẩm gốc của ShipCode. Ảnh minh họa phân tích lấy từ tài liệu của repository.",
+    demo: "https://rea.tools",
+    fork: true,
+  },
+];
+export const featuredProjects = [
+  "sellerpilot",
+  "climate",
+  "fridge",
+  "vision",
+].map((id) => projects.find((project) => project.id === id)!);
+export const projectFilters = [
+  { id: "all", name: "Tất cả" },
+  { id: "web", name: "Web & ứng dụng" },
+  { id: "ai", name: "AI" },
+  { id: "data", name: "Dữ liệu" },
+  { id: "iot", name: "IoT" },
+  { id: "tool", name: "Công cụ" },
+] as const;

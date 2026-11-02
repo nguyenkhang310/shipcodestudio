@@ -16,9 +16,9 @@ const buttonVariants = cva(
         ghost: "hover:bg-muted hover:text-foreground",
         link: "text-primary underline-offset-4 hover:underline",
         hero:
-          "bg-gradient-primary text-primary-foreground shadow-elegant hover:brightness-105 hover:-translate-y-0.5 active:translate-y-0",
+          "rounded-full bg-primary text-primary-foreground hover:bg-primary/90",
         fire:
-          "bg-gradient-fire text-primary-foreground shadow-glow-red hover:brightness-105 hover:-translate-y-0.5",
+          "rounded-full bg-primary text-primary-foreground hover:bg-primary/90",
         glass:
           "border border-border bg-card/70 text-foreground shadow-card hover:border-primary/40 hover:bg-card",
         outlineGlow:

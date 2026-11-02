@@ -22,3 +22,13 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local deployment metadata and private environment settings
+.vercel
+.env
+.env.*
+!.env.example
+
+# Original footage stays local; web-ready videos are in public/media
+/*.mov
+/*.MP4

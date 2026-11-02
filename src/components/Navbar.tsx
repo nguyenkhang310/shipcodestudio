@@ -1,211 +1,213 @@
-import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo-shipcode.webp";
-
-const links = [
-  { to: "/#dich-vu", label: "Dịch vụ", num: "01", isHash: true },
-  { to: "/#quy-trinh", label: "Quy trình", num: "02", isHash: true },
-  { to: "/#bang-gia", label: "Bảng giá", num: "03", isHash: true },
-  { to: "/du-an", label: "Dự án", num: "04", isHash: false },
-  { to: "/cong-nghe", label: "Công nghệ", num: "05", isHash: false },
-  { to: "/blog", label: "Blog", num: "06", isHash: false },
-  { to: "/faq", label: "FAQ", num: "07", isHash: false },
+import { useEffect, useRef, useState, type MouseEvent } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+import logo from "@/assets/shipcode-transparent.webp";
+import { useActiveSection } from "@/lib/useActiveSection";
+import { useSmoothScroll } from "@/components/studio/SmoothScroll";
+const pageLinks = [
+  { to: "/dich-vu", label: "Dịch vụ" },
+  { to: "/du-an", label: "Dự án" },
+  { to: "/quy-trinh", label: "Cách làm việc" },
+  { to: "/bang-gia", label: "Chi phí" },
+  { to: "/blog", label: "Góc chia sẻ" },
 ];
-
 export const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-
-  useEffect(() => {
-    const handler = () => setScrolled(window.scrollY > 20);
-    handler();
-    window.addEventListener("scroll", handler);
-    return () => window.removeEventListener("scroll", handler);
-  }, []);
-
+  const { pathname, hash } = useLocation();
+  const activeSection = useActiveSection(pathname === "/");
+  const scroll = useSmoothScroll();
+  const activeLabel = (
+    {
+      "trang-chu": "Trang chủ",
+      "du-an": "Dự án",
+      "dich-vu": "Dịch vụ",
+      founder: "Founder",
+      "chi-phi": "Chi phí",
+      "lien-he-home": "Liên hệ",
+    } as Record<string, string>
+  )[activeSection];
+  const isLinkActive = (to: string) =>
+    to.includes("#")
+      ? pathname === "/" && activeSection === to.split("#")[1]
+      : pathname === to || pathname.startsWith(to + "/");
+  function followAnchor(event: MouseEvent<HTMLAnchorElement>, to: string) {
+    setOpen(false);
+    // Clicking an already selected hash must still return to that section.
+    if (
+      pathname !== "/" ||
+      !to.includes("#") ||
+      hash !== "#" + to.split("#")[1] ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey ||
+      event.altKey
+    )
+      return;
+    const target = document.getElementById(to.split("#")[1]);
+    if (!target) return;
+    event.preventDefault();
+    requestAnimationFrame(() => {
+      if (scroll?.current) {
+        scroll.current.resize();
+        scroll.current.scrollTo(target, { duration: 1.1 });
+      } else
+        window.scrollTo({
+          top: target.getBoundingClientRect().top + window.scrollY - 80,
+          behavior: window.matchMedia("(prefers-reduced-motion: reduce)")
+            .matches
+            ? "instant"
+            : "smooth",
+        });
+    });
+  }
+  const links =
+    pathname === "/"
+      ? [
+          { to: "/#du-an", label: "Dự án" },
+          { to: "/#dich-vu", label: "Dịch vụ" },
+          { to: "/#chi-phi", label: "Chi phí" },
+          { to: "/#founder", label: "Founder" },
+          { to: "/blog", label: "Góc chia sẻ" },
+        ]
+      : pageLinks;
+  const toggle = useRef<HTMLButtonElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
   useEffect(() => {
     setOpen(false);
-    if (location.hash) {
-      requestAnimationFrame(() => {
-        document
-          .getElementById(location.hash.replace("#", ""))
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      });
-      return;
+  }, [pathname, hash]);
+  useEffect(() => {
+    if (!open) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    menu.current?.querySelector<HTMLAnchorElement>("a")?.focus();
+    function keydown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
+      }
+      if (e.key === "Tab") {
+        const items = [
+          toggle.current,
+          ...Array.from(
+            menu.current?.querySelectorAll<HTMLAnchorElement>("a") || [],
+          ),
+        ].filter(Boolean) as HTMLElement[];
+        const index = items.indexOf(document.activeElement as HTMLElement);
+        if (e.shiftKey && index <= 0) {
+          e.preventDefault();
+          items[items.length - 1]?.focus();
+        } else if (!e.shiftKey && index === items.length - 1) {
+          e.preventDefault();
+          items[0]?.focus();
+        }
+      }
     }
-    window.scrollTo({ top: 0, behavior: "auto" });
-  }, [location.pathname, location.hash]);
-
+    document.addEventListener("keydown", keydown);
+    return () => {
+      document.body.style.overflow = previous;
+      document.removeEventListener("keydown", keydown);
+    };
+  }, [open]);
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
-        scrolled
-          ? "border-primary/40 bg-gradient-to-b from-background/95 to-background/80 backdrop-blur-2xl shadow-lg"
-          : "border-primary/20 bg-gradient-to-b from-background/85 to-background/70 backdrop-blur-xl"
-      }`}
+      className={`site-header ${pathname === "/" ? "is-studio" : ""} ${open ? "menu-is-open" : ""}`}
     >
-      {/* Top border glow effect */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-50" />
-
-      <nav className="container flex h-[72px] items-center justify-between gap-4">
-        <Link
-          to="/"
-          className="flex items-center gap-3 group shrink-0 transition-transform hover:scale-[1.02]"
-        >
-          <div className="relative">
-            <img
-              src={logo}
-              alt="ShipCode logo"
-              className="h-11 w-11 rounded-lg object-cover transition-all duration-300 group-hover:shadow-lg group-hover:shadow-primary/30"
-              width={44}
-              height={44}
-            />
-            <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-primary/20 to-transparent" />
-          </div>
-          <div className="hidden sm:block">
-            <div className="font-display font-bold text-lg leading-none bg-gradient-to-r from-foreground to-primary bg-clip-text text-transparent">
-              SHIP<span className="text-primary">CODE</span>
-            </div>
-            <div className="text-[10px] text-primary/80 uppercase tracking-[0.14em] mt-1 font-semibold">
-              Code · Build · Ship
-            </div>
-          </div>
+      <nav className="nav-inner" aria-label="Điều hướng chính">
+        <Link to="/" className="brand" aria-label="ShipCode — Trang chủ">
+          <img src={logo} alt="" />
+          <span>
+            shipcode<span className="brand-period">.</span>
+          </span>
         </Link>
-
-        <ul className="hidden lg:flex items-center gap-0.5">
+        <div className="desktop-nav">
           {links.map((l) => (
-            <li key={l.to}>
-              {l.isHash ? (
-                <a
-                  href={l.to}
-                  className="relative inline-flex min-h-10 items-center gap-2 rounded-lg px-3.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:bg-primary/8 group"
-                >
-                  <span className="font-mono text-[10px] text-primary/70 font-bold tracking-wider">
-                    {l.num}
-                  </span>
-                  <span className="relative">{l.label}</span>
-                  <span className="absolute bottom-2 left-3 right-3 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-center" />
-                </a>
-              ) : (
-                <NavLink
-                  to={l.to}
-                  className={({ isActive }) =>
-                    `relative inline-flex min-h-10 items-center gap-2 rounded-lg px-3.5 text-sm font-medium transition-all duration-200 group ${
-                      isActive
-                        ? "text-primary bg-primary/12 shadow-md shadow-primary/20"
-                        : "text-muted-foreground hover:text-foreground hover:bg-primary/8"
-                    }`
-                  }
-                >
-                  {({ isActive }) => (
-                    <>
-                      <span className="font-mono text-[10px] text-primary/70 font-bold tracking-wider">
-                        {l.num}
-                      </span>
-                      <span className="relative">{l.label}</span>
-                      {isActive && (
-                        <motion.span
-                          className="absolute -bottom-0.5 left-3 right-3 h-0.5 bg-gradient-to-r from-primary via-primary to-primary/60 rounded-full"
-                          layoutId="navbar-indicator"
-                          transition={{
-                            type: "spring",
-                            stiffness: 380,
-                            damping: 30,
-                          }}
-                        />
-                      )}
-                    </>
-                  )}
-                </NavLink>
-              )}
-            </li>
-          ))}
-        </ul>
-
-        <div className="hidden md:flex items-center gap-3 shrink-0">
-          <Button
-            asChild
-            variant="hero"
-            size="default"
-            className="shadow-md shadow-primary/30 hover:shadow-primary/50 transition-all duration-300"
-          >
-            <Link to="/lien-he" className="bg-primary hover:bg-primary/90">
-              Nhận tư vấn
+            <Link
+              key={l.to}
+              to={l.to}
+              className={isLinkActive(l.to) ? "active" : undefined}
+              aria-current={
+                isLinkActive(l.to)
+                  ? l.to.includes("#")
+                    ? "location"
+                    : "page"
+                  : undefined
+              }
+              onClick={(event) => followAnchor(event, l.to)}
+            >
+              {l.label}
             </Link>
-          </Button>
+          ))}
         </div>
-
-        <button
-          aria-label="Menu"
-          className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-primary/30 bg-primary/10 hover:bg-primary/20 hover:border-primary/40 transition-all duration-300"
-          onClick={() => setOpen(!open)}
+        <Link
+          className={`nav-contact ${pathname === "/" && activeSection === "lien-he-home" ? "active" : ""}`}
+          aria-current={
+            pathname === "/" && activeSection === "lien-he-home"
+              ? "location"
+              : undefined
+          }
+          to="/lien-he"
         >
-          {open ? (
-            <X className="text-primary" />
-          ) : (
-            <Menu className="text-primary" />
+          Cùng bắt đầu <ArrowUpRight size={13} />
+        </Link>
+        <button
+          className="menu-toggle"
+          ref={toggle}
+          aria-label={open ? "Đóng menu" : "Mở menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {pathname === "/" && !open && (
+            <span className="nav-section-name">{activeLabel}</span>
           )}
+          {open ? <X size={21} /> : <Menu size={21} />}
         </button>
       </nav>
-
-      {open && (
-        <motion.div
-          className="lg:hidden border-t border-primary/30 bg-background/98 backdrop-blur-xl max-h-[calc(100svh-72px)] overflow-y-auto"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.2 }}
-        >
-          <ul className="container py-4 sm:py-6 space-y-1 sm:space-y-2">
-            {links.map((l) => (
-              <li key={l.to}>
-                {l.isHash ? (
-                  <a
-                    href={l.to}
-                    onClick={() => setOpen(false)}
-                    className="flex min-h-11 items-center gap-3 rounded-lg px-4 text-base text-muted-foreground hover:text-primary hover:bg-primary/12 transition-all duration-200"
-                  >
-                    <span className="font-mono text-xs font-bold text-primary/80">
-                      {l.num}
-                    </span>
-                    {l.label}
-                  </a>
-                ) : (
-                  <NavLink
-                    to={l.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                      `flex min-h-11 items-center gap-3 rounded-lg px-4 text-base transition-all duration-200 ${
-                        isActive
-                          ? "bg-primary/12 text-primary font-semibold"
-                          : "text-muted-foreground hover:text-primary hover:bg-primary/8"
-                      }`
-                    }
-                  >
-                    {({ isActive }) => (
-                      <>
-                        <span className="font-mono text-xs font-bold text-primary/80">
-                          {l.num}
-                        </span>
-                        {l.label}
-                      </>
-                    )}
-                  </NavLink>
-                )}
-              </li>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-menu"
+            ref={menu}
+            className="mobile-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.25 }}
+          >
+            <span className="eyebrow">KHÁM PHÁ SHIPCODE</span>
+            {[
+              ...links,
+              { to: "/cong-nghe", label: "Công nghệ" },
+              { to: "/faq", label: "Câu hỏi thường gặp" },
+              { to: "/lien-he", label: "Liên hệ" },
+            ].map((l, i) => (
+              <motion.div
+                key={l.to}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.035 }}
+              >
+                <Link
+                  to={l.to}
+                  className={isLinkActive(l.to) ? "active" : undefined}
+                  aria-current={
+                    isLinkActive(l.to)
+                      ? l.to.includes("#")
+                        ? "location"
+                        : "page"
+                      : undefined
+                  }
+                  onClick={(event) => followAnchor(event, l.to)}
+                >
+                  {l.label}
+                  <ArrowUpRight size={22} />
+                </Link>
+              </motion.div>
             ))}
-            <li className="pt-3">
-              <Button asChild variant="hero" className="w-full">
-                <Link to="/lien-he">Nhận tư vấn</Link>
-              </Button>
-            </li>
-          </ul>
-        </motion.div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
