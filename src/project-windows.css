@@ -734,3 +734,13 @@
     padding-bottom: 32px;
   }
 }
+
+/* Reserve the tallest caption so switching windows never pushes the page. */
+.project-window-caption {
+  display: grid;
+  align-content: start;
+}
+.window-caption-entry {
+  grid-area: 1 / 1;
+  min-width: 0;
+}

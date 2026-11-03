@@ -9,22 +9,27 @@ import {
 } from "framer-motion";
 
 // Keep normal document flow on short viewports and when motion is reduced.
-export function useSceneMotion() {
+export function useSceneMotion(minimumWidth = 0) {
   const reduced = useReducedMotion();
   const [tall, setTall] = useState(
-    () => window.matchMedia("(min-height: 660px)").matches,
+    () =>
+      window.matchMedia(
+        `(min-height: 660px) and (min-width: ${minimumWidth}px)`,
+      ).matches,
   );
   useEffect(() => {
-    const query = window.matchMedia("(min-height: 660px)");
+    const query = window.matchMedia(
+      `(min-height: 660px) and (min-width: ${minimumWidth}px)`,
+    );
     const update = () => setTall(query.matches);
     query.addEventListener("change", update);
     return () => query.removeEventListener("change", update);
-  }, []);
+  }, [minimumWidth]);
   return !reduced && tall;
 }
 
 export function HeroSequence({ children }: { children: ReactNode }) {
-  const animated = useSceneMotion();
+  const animated = useSceneMotion(801);
   return animated ? <AnimatedHero>{children}</AnimatedHero> : <>{children}</>;
 }
 

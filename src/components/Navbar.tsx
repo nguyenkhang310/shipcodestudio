@@ -2,7 +2,7 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import logo from "@/assets/shipcode-transparent.webp";
+import { BrandMark } from "@/components/studio/BrandMark";
 import { useActiveSection } from "@/lib/useActiveSection";
 import { useSmoothScroll } from "@/components/studio/SmoothScroll";
 const pageLinks = [
@@ -115,7 +115,7 @@ export const Navbar = () => {
     >
       <nav className="nav-inner" aria-label="Điều hướng chính">
         <Link to="/" className="brand" aria-label="ShipCode — Trang chủ">
-          <img src={logo} alt="" />
+          <BrandMark size={40} priority decorative />
           <span>
             shipcode<span className="brand-period">.</span>
           </span>

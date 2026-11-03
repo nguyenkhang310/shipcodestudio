@@ -6,5 +6,6 @@ import "./scroll-scenes.css";
 import "./news.css";
 import "./project-windows.css";
 import "./home-sections.css";
+import "./mobile.css";
 
 createRoot(document.getElementById("root")!).render(<App />);

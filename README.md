@@ -69,3 +69,5 @@ Video R Shiny `6B3B9565-5F62-48A5-9193-9CF39112D5B6.mov` có bản giới thiệ
 Góc chia sẻ giữ API RSS2JSON công khai có sẵn, không cần khóa API mới. Nội dung dẫn tới báo gốc, không sử dụng bài tĩnh thay cho nguồn tin. Nếu một nguồn gián đoạn, các nguồn khác vẫn hiển thị; khi tất cả nguồn lỗi, có nút thử lại và liên kết trực tiếp tới sáu báo.
 
 Bố cục trang chủ xen kẽ: video mở đầu tối → dự án sáng → dịch vụ tối → bảng giá sáng → Founder tối → liên hệ sáng. Ảnh Founder giữ màu gốc. Danh sách repo chỉ mở khi bấm Khám phá thêm trong Dự án. Menu tự đánh dấu mục đang xem; liên kết tới mục dùng cùng khoảng bù 80px dưới header.
+
+Mobile: `src/mobile.css` chứa bố cục gọn cho điện thoại; `BrandMark.tsx` dùng logo theo mật độ điểm ảnh; `use-media-query.ts` chọn video mobile ngay từ lần render đầu. Phạm vi thay đổi, số liệu tài nguyên và cách kiểm tra ở `docs/mobile-optimization.md`.

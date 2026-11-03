@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useMediaQuery } from "@/hooks/use-media-query";
 const films = [
   {
     src: "/media/sellerpilot-hero.mp4",
+    mobileSrc: "/media/sellerpilot-hero-mobile.mp4",
     poster: "/projects/sellerpilot.jpg",
     name: "SellerPilot",
     type: "Ứng dụng di động · AI",
@@ -10,6 +12,7 @@ const films = [
   },
   {
     src: "/media/climate-hero.mp4",
+    mobileSrc: "/media/climate-hero-mobile.mp4",
     poster: "/projects/climate-lab.jpg",
     name: "Climate Lab",
     type: "Trực quan hóa dữ liệu",
@@ -17,6 +20,7 @@ const films = [
   },
   {
     src: "/media/property-outro.mp4",
+    mobileSrc: "/media/property-outro-mobile.mp4",
     poster: "/projects/property-demo.jpg",
     name: "Phân tích bất động sản",
     type: "R · Shiny · Dữ liệu TP.HCM",
@@ -26,6 +30,7 @@ const films = [
 export function HeroReel() {
   const [active, setActive] = useState(0),
     reduced = useReducedMotion();
+  const compact = useMediaQuery("(max-width: 800px)");
   const video = useRef<HTMLVideoElement>(null);
   useEffect(() => {
     if (reduced) return;
@@ -36,14 +41,22 @@ export function HeroReel() {
     return () => clearTimeout(timer);
   }, [active, reduced]);
   const film = films[active];
+  const source = compact ? film.mobileSrc : film.src;
   return (
     <div className="product-reel">
-      <div className="product-reel-stage">
+      <div
+        className="product-reel-stage"
+        style={{
+          backgroundImage: `url(${film.poster})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         <AnimatePresence mode="wait" initial={false}>
           <motion.video
-            key={film.src}
+            key={source}
             ref={video}
-            src={film.src}
+            src={source}
             poster={film.poster}
             aria-label={`Demo ${film.name}`}
             autoPlay

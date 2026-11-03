@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useMediaQuery } from "@/hooks/use-media-query";
 interface FilmProps {
   src: string;
   poster: string;
@@ -10,6 +11,7 @@ export function Film({ src, poster, title, eager = false }: FilmProps) {
   const host = useRef<HTMLDivElement>(null),
     video = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(eager);
+  const compact = useMediaQuery("(max-width: 800px)");
   useEffect(() => {
     if (!host.current) return;
     const observer = new IntersectionObserver(
@@ -19,11 +21,11 @@ export function Film({ src, poster, title, eager = false }: FilmProps) {
           observer.disconnect();
         }
       },
-      { rootMargin: "350px" },
+      { rootMargin: compact ? "80px" : "350px" },
     );
     observer.observe(host.current);
     return () => observer.disconnect();
-  }, []);
+  }, [compact]);
   return (
     <div className="video-shell" ref={host}>
       <div className="film-preview">

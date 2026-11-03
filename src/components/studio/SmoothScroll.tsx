@@ -7,14 +7,16 @@ import {
 } from "react";
 import { useReducedMotion } from "framer-motion";
 import Lenis from "lenis";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import "lenis/dist/lenis.css";
 const ScrollContext =
   createContext<React.MutableRefObject<Lenis | null> | null>(null);
 export function SmoothScroll({ children }: { children: ReactNode }) {
   const instance = useRef<Lenis | null>(null),
     reduced = useReducedMotion();
+  const touch = useMediaQuery("(hover: none) and (pointer: coarse)");
   useEffect(() => {
-    if (reduced) return;
+    if (reduced || touch) return;
     const lenis = new Lenis({
       autoRaf: true,
       lerp: 0.085,
@@ -46,7 +48,7 @@ export function SmoothScroll({ children }: { children: ReactNode }) {
       lenis.destroy();
       instance.current = null;
     };
-  }, [reduced]);
+  }, [reduced, touch]);
   return (
     <ScrollContext.Provider value={instance}>{children}</ScrollContext.Provider>
   );

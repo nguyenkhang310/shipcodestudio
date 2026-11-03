@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Music2, RotateCw } from "lucide-react";
 import { Reveal } from "./Motion";
-import logo from "@/assets/shipcode-transparent.webp";
+import { BrandMark } from "./BrandMark";
 const origin = "https://www.tiktok.com",
   profile = `${origin}/@shipcodestudio`;
 export const pinnedTikToks = [
@@ -93,7 +93,7 @@ function TikTokPlayer({ id, label }: { id: string; label: string }) {
         )}
         <div className={`tiktok-cover ${ready && !failed ? "is-hidden" : ""}`}>
           <Music2 size={21} />
-          <img src={logo} alt="" />
+          <BrandMark size={130} decorative />
           <strong>@shipcodestudio</strong>
           {failed ? (
             <>
@@ -148,7 +148,7 @@ export function TikTok({ compact = false }: { compact?: boolean }) {
             target="_blank"
             rel="noreferrer"
           >
-            <img src={logo} alt="Logo ShipCode" />
+            <BrandMark size={52} decorative />
             <span>
               <strong>ShipCode Studio</strong>
               <small>TikTok · @shipcodestudio</small>

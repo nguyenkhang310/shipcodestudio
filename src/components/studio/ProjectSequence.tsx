@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  AnimatePresence,
+  animate,
+  useReducedMotion,
+  type AnimationPlaybackControls,
   motion,
   useMotionValue,
   useMotionValueEvent,
@@ -54,7 +56,7 @@ const showcase: Showcase[] = [
 showcase.splice(2, 0, aiDemo);
 
 export function ProjectSequence() {
-  const animated = useSceneMotion();
+  const animated = useSceneMotion(801);
   return animated ? <ScrollWindows /> : <ManualWindows />;
 }
 
@@ -97,14 +99,29 @@ function ScrollWindows() {
 }
 function ManualWindows() {
   const [active, setActive] = useState(0);
+  const reduced = useReducedMotion();
   const position = useMotionValue(0);
+  const animation = useRef<AnimationPlaybackControls | null>(null);
+  useEffect(() => () => animation.current?.stop(), []);
   function select(index: number) {
-    position.set(index);
-    setActive(index);
+    const next = Math.max(0, Math.min(showcase.length - 1, index));
+    animation.current?.stop();
+    setActive(next);
+    if (reduced) position.set(next);
+    else
+      animation.current = animate(position, next, {
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      });
   }
   return (
     <div className="project-window-manual">
-      <WindowGallery position={position} active={active} select={select} />
+      <WindowGallery
+        position={position}
+        active={active}
+        select={select}
+        swipe
+      />
     </div>
   );
 }
@@ -112,12 +129,15 @@ function WindowGallery({
   position,
   active,
   select,
+  swipe = false,
 }: {
   position: MotionValue<number>;
   active: number;
   select: (index: number) => void;
+  swipe?: boolean;
 }) {
-  const item = showcase[active];
+  const touch = useRef({ x: 0, y: 0 });
+  const swiped = useRef(false);
   return (
     <div
       className="project-window-gallery"
@@ -158,7 +178,32 @@ function WindowGallery({
           <ArrowUpRight size={14} />
         </a>
       </div>
-      <div className="project-window-canvas">
+      <div
+        className="project-window-canvas"
+        onTouchStart={(event) => {
+          if (!swipe) return;
+          const point = event.touches[0];
+          touch.current = { x: point.clientX, y: point.clientY };
+          swiped.current = false;
+        }}
+        onTouchEnd={(event) => {
+          if (!swipe) return;
+          const point = event.changedTouches[0];
+          const dx = point.clientX - touch.current.x;
+          const dy = point.clientY - touch.current.y;
+          if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.3) {
+            swiped.current = true;
+            select(active + (dx < 0 ? 1 : -1));
+          }
+        }}
+        onClickCapture={(event) => {
+          if (swiped.current) {
+            event.preventDefault();
+            event.stopPropagation();
+            swiped.current = false;
+          }
+        }}
+      >
         {showcase.map((entry, index) => (
           <ProjectWindow
             key={entry.id}
@@ -184,12 +229,20 @@ function WindowGallery({
           aria-live="polite"
           aria-atomic="true"
         >
-          <AnimatePresence initial={false} mode="wait">
+          {showcase.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
+              className="window-caption-entry"
+              aria-hidden={active !== index}
+              ref={(element) => {
+                if (element) element.inert = active !== index;
+              }}
+              style={{ visibility: active === index ? "visible" : "hidden" }}
+              initial={false}
+              animate={{
+                opacity: active === index ? 1 : 0,
+                y: active === index ? 0 : 8,
+              }}
               transition={{ duration: 0.18 }}
             >
               <span className="window-project-stack">
@@ -211,7 +264,7 @@ function WindowGallery({
                 <ArrowUpRight size={14} />
               </a>
             </motion.div>
-          </AnimatePresence>
+          ))}
         </div>
         <button
           className="project-window-arrow"
